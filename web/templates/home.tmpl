@@ -1,0 +1,40 @@
+{{ define "home" }}
+
+{{ template "header" }}
+
+<br/>
+<!-- Punto de acceso a Crear nuevo empleado-->
+<a href="/create" class="btn btn-primary">Add employee</a>
+
+<br/><br/>
+<!-- Tabla de empleados-->
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{range.}}
+        <tr>
+          <td> {{.Id}} </td>
+          <td> {{.Name}}</td>
+          <td> {{.Email}}</td>
+          <!-- Imprime la variable pasada desde la funcion -->
+          <!-- <td> Edit {{.Id}} | Del {{.Id}}</td> -->
+          <td>
+            <a name="" type="button" class="btn btn-outline-warning btn-sm" href="/edit?id={{.Id}}">Edit</a>
+            |
+            <a name="" type="button" class="btn btn-outline-danger btn-sm" href="/delete?id={{.Id}}">Delete</a>
+          </td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+
+{{ template "footer" }}
+
+{{ end }}
